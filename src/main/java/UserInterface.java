@@ -6,9 +6,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    static JFrame jFrame;
-
-    static JFrame getFrame() {
+    public UserInterface() {
         JFrame jFrame = new JFrame();
         jFrame.setTitle("WebScraper");
         jFrame.setDefaultCloseOperation(jFrame.EXIT_ON_CLOSE);
@@ -16,7 +14,7 @@ public class UserInterface {
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         jFrame.setBounds(dimension.width / 2 - 500, dimension.height / 2 - 300, 1000, 600);
 
-         JMenuBar jMenuBar = new JMenuBar();
+        JMenuBar jMenuBar = new JMenuBar();
         JMenu jMenuScraper = new JMenu("Scraper");
         jMenuScraper.add(new JMenuItem("Search page")).addActionListener(new ActionListener() {
             @Override
@@ -31,17 +29,15 @@ public class UserInterface {
 
         jFrame.setJMenuBar(jMenuBar);
         jFrame.setVisible(true);
-        return jFrame;
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                jFrame = getFrame();
+                new UserInterface();
             }
         });
-
     }
 
     static class GreetingComponent extends JComponent {
@@ -59,7 +55,4 @@ public class UserInterface {
             return jPanel;
         }
     }
-
-
-
 }
